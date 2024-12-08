@@ -95,7 +95,8 @@ docker file is also located in root directory named Dockerfile
 - **Step 4** Click Build Now
 - **Step 5** http:localhost:8080 is the end point where frontend is served in springboot static files
 ![image](https://github.com/user-attachments/assets/c7acbcec-f834-4c0e-8ea2-ba31ce5b172a)
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/cdfecfc9-14ba-485e-af71-284f2efd911d)
+
 
 
 
