@@ -4,19 +4,13 @@ pipeline {
     environment {
         FRONTEND_DIR = 'NewsSearchFrontend'
         BACKEND_DIR = 'NewsSearchBackend'
-	ZIP_FILE = 'NewsSearchMS.zip'
     }
 
     stages {
 
-        stage('Extract ZIP') {
+        stage('Checkout') {
             steps {
-                script {
-                    sh 'rm -rf *'
-                    
-                    echo "Unzipping ${ZIP_FILE}"
-                    sh "unzip ${ZIP_FILE}"
-                }
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/deepankarbatra/NewsSearchMicroservice.git']])
             }
         }
 
@@ -24,18 +18,27 @@ pipeline {
             steps {
                 dir(FRONTEND_DIR) {
                     script {
-                        sh 'npm install'
-                        sh 'ng build'
+                        bat 'npm install'
+                        bat 'ng build'
                     }
                 }
             }
         }
+        
+        stage('Copy file') {
+            steps {
+                script {
+                    bat 'xcopy NewsSearchFrontend\\dist\\news-search NewsSearchBackend\\src\\main\\resources\\static /E /I /Y'
+                }
+            }
+        }
+
 
         stage('Build Backend') {
             steps {
                 dir(BACKEND_DIR) {
                     script {
-                        sh './mvnw clean install'
+                        bat 'mvn clean install'
                     }
                 }
             }
@@ -43,16 +46,18 @@ pipeline {
 
         stage('Dockerize') {
             steps {
-                script {
-                    sh 'docker build -t myapp:latest .'
-                }
+                
+                    script {
+                        bat 'docker build -t myapp:latest .'
+                    }
+                
             }
         }
 
         stage('Deploy') {
             steps {
                 script {
-                    sh 'docker run -p 8080:8080 myapp:latest'
+                    bat 'docker run -d -p 8080:8080 myapp:latest'
                 }
             }
         }
