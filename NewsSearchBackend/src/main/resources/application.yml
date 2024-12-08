@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+news:
+  guardian:
+    apiKey: d68a6350-3d20-461f-8ffc-1586d6de401c
+    baseUrl: https://content.guardianapis.com
+
+  nyt:
+    apiKey: RtmteEIlV9mVOvW1Mw9MaHhpJ0hN4W9V
+    secretKey: r19HgWD5vSRxVObn
+    baseUrl: https://api.nytimes.com
+
