@@ -58,6 +58,10 @@ GET: http://localhost:8080/news/search?keyword={abc}&page={pageNumber}&offlineMo
 
 ## Build & Deployment
 
+Both Jenkins and docker script is present at root as seen in screenshot
+![image](https://github.com/user-attachments/assets/3d0db09b-6eb8-45d4-b72c-49e28dd6b0b1)
+
+
 ### CI/CD Pipeline
 
 The project is configured with Jenkins for Continuous Integration and Deployment. The pipeline automates the process of building, testing, and deploying the services.
@@ -79,10 +83,19 @@ docker file is also located in root directory named Dockerfile
 
 ## Steps to start application using Jenkins
 - **Step 1** Copy the Jenkins script from Jenkinsfile
+![image](https://github.com/user-attachments/assets/a085f40a-dc36-4989-8a68-704a4c5c91bb)
+
 - **Step 2** In jenkins web interface, Click on New Item > Enter an Item name > Select Pipeline > Advanced Project Options > paste the script
+![image](https://github.com/user-attachments/assets/8cf1a0e0-9d93-4855-8d80-064812cb2bc7)
+![image](https://github.com/user-attachments/assets/c1fb02e7-a2db-4a00-9ba9-4ad11b6da315)
+![image](https://github.com/user-attachments/assets/93fdb8cf-d7d8-41c6-b699-6a881e4ee99d)
+
+  
 - **Step 3** Save
 - **Step 4** Click Build Now
 - **Step 5** http:localhost:8080 is the end point where frontend is served in springboot static files
+![image](https://github.com/user-attachments/assets/c7acbcec-f834-4c0e-8ea2-ba31ce5b172a)
+![Uploading image.png…]()
 
 
 
